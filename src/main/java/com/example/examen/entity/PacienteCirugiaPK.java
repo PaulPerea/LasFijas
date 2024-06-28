@@ -5,37 +5,29 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
+@EqualsAndHashCode
+@Embeddable
 public class PacienteCirugiaPK implements Serializable{
       
-  @Getter @Setter
-  private Long pacienteId;
+  private static final long serialVersionUID = 1L;
+
+  private int paciente_id;
   
-  @Getter @Setter
-  private Long cirugiaId;
+  private int cirugia_id;
   
-  @Getter @Setter
-  private LocalDate fecha;
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass()!= o.getClass()) return false;
-    PacienteCirugiaPK that = (PacienteCirugiaPK) o;
-    return Objects.equals(pacienteId, that.pacienteId) &&
-        Objects.equals(cirugiaId, that.cirugiaId) &&
-        Objects.equals(fecha, that.fecha);
-  }
-  
-  @Override
-  public int hashCode() {
-    return Objects.hash(pacienteId, cirugiaId, fecha);
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
+  private Date fecha;
 }

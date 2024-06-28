@@ -18,17 +18,12 @@ public class PacienteCirugiaServiceImp implements PacienteCirugiaService {
 
     @Override
     public List<PacienteCirugia> obtenerTodasLasPacienteCirugias() {
-        return pacienteCirugiaRepository.obtenerTodasLasPacienteCirugias();
+        return pacienteCirugiaRepository.findAll();
     }
 
     @Override
-    public PacienteCirugia createPacienteCirugia(PacienteCirugia pacienteCirugia) {
+    public PacienteCirugia createActualizarPacienteCirugia(PacienteCirugia pacienteCirugia) {
         return pacienteCirugiaRepository.save(pacienteCirugia);
-    }
-
-    @Override
-    public PacienteCirugia updatePacienteCirugia(PacienteCirugia pacienteCirugia) {
-        return pacienteCirugiaRepository.saveAndFlush(pacienteCirugia);
     }
 
     @Override

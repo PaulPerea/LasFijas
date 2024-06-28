@@ -1,9 +1,8 @@
 package com.example.examen.entity;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
-import java.util.List;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -25,26 +24,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@IdClass(PacienteCirugiaPK.class)
 @Table(name = "pacientescirugias")
 public class PacienteCirugia {
+
+  @EmbeddedId
+	private PacienteCirugiaPK pacienteCirugiaPK;
      
-  @Id
   @ManyToOne
-  @JoinColumn(name = "paciente_id")
-  @Getter @Setter
-  private List<Paciente> paciente;
+  @JoinColumn(name = "paciente_id", nullable = false, insertable = false, updatable = false)
+  private Paciente paciente;
   
-  @Id
-  @OneToMany
-  @JoinColumn(name = "cirugia_id")
+  @ManyToOne
+  @JoinColumn(name = "cirugia_id", nullable = false, insertable = false, updatable = false)
   @Getter @Setter
   private Cirugia cirugia;
   
-  @Id
-  @Temporal(TemporalType.DATE)
-  @Getter @Setter
-  private Date fecha;
-
-   
+  @Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  @Column(name = "fecha", insertable = false, updatable = false)
+	private Date fecha;
 }

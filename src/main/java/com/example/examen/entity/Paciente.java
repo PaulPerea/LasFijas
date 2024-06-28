@@ -1,6 +1,8 @@
 package com.example.examen.entity;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,39 +26,31 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "paciente_id")
-    @Getter @Setter
-    private Long pacienteId;
+    private int pacienteId;
     
     @Column(nullable = false, length = 100)
-    @Getter @Setter
     private String nombre;
     
     @Column(nullable = false, length = 100)
-    @Getter @Setter
     private String apellido;
     
-    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
-    @Getter @Setter
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
     
     @Column(length = 255)
-    @Getter @Setter
     private String direccion;
     
     @Column(length = 20)
-    @Getter @Setter
     private String telefono;
     
     @Column(length = 100)
-    @Getter @Setter
     private String email;
     
-    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Lima")
-    @Getter @Setter
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
+    @Column(name = "fecha_registro")
     private Date fechaRegistro;
 
 }

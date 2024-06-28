@@ -1,0 +1,32 @@
+1 GET
+http://localhost:8050/url/PacienteCirugia/listarPacienteCirugiaTodos
+
+2 POST
+http://localhost:8050/url/PacienteCirugia/registraPacienteCirugia
+{
+    "pacienteCirugiaPK": {
+        "paciente_id": 1,
+        "cirugia_id": 2,
+        "fecha": "1456-10-10"
+    }
+}
+
+3 (PUT)
+http://localhost:8050/url/PacienteCirugia/actualizaPacienteCirugia
+{
+    "pacienteCirugiaPK": {
+        "paciente_id": 5,
+        "cirugia_id": 5,
+        "fecha": "1236-10-10"
+    }
+}
+
+4 (DELETE)
+http://localhost:8050/url/PacienteCirugia/eliminaPacienteCliente
+{
+    "pacienteCirugiaPK": {
+        "paciente_id": 1,
+        "cirugia_id": 2,
+        "fecha": "1456-10-10"
+    }
+}
